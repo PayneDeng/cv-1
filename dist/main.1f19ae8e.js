@@ -118,7 +118,24 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-console.log('hi');
+var demo = document.querySelector("#demo");
+var string = "\u4F60\u597D\uFF0C\u6211\u662F\u4E00\u540D\u524D\u7AEF\u65B0\u4EBA\n\u63A5\u4E0B\u6765\u6211\u8981\u52A0\u6837\u5F0F\u4E86\n\u6211\u8981\u52A0\u7684\u6837\u5F0F\u662F\nbody{\n  color:red;\n}\n";
+string = string.replace(/\n/g, "<br>");
+var n = 0;
+demo.innerHTML = string.substring(0, n);
+
+var step = function step() {
+  setTimeout(function () {
+    n = n + 1;
+    demo.innerHTML = string.substring(0, n);
+
+    if (n < string.length) {
+      step();
+    }
+  }, 100);
+};
+
+step();
 },{}],"../../../../../AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -147,7 +164,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49294" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55541" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
