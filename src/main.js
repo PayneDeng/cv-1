@@ -6,18 +6,22 @@ body{
   color:red;
 }
 `;
-string = string.replace(/\n/g, "<br>");
+let string2 = "";
+console.log(string.length);
 let n = 0;
-demo.innerHTML = string.substring(0, n);
 
 let step = () => {
   setTimeout(() => {
-    n = n + 1;
-    demo.innerHTML = string.substring(0, n);
-    if (n < string.length) {
+    //如果是回车就不照搬
+    //如果不是回车就照搬
+    string2 += string[n] === "\n" ? "<br>" : string[n];
+    demo.innerHTML = string2;
+    if (n < string.length - 1) {
+      //如果n不是最后一个，就继续
+      n += 1;
       step();
     }
   }, 100);
 };
 
-step();
+step();//1=>2
